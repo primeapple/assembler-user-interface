@@ -5,8 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack src/index.js --output bin/app.js -d --watch",
-    "build": "webpack src/index.js --outpout bin/app.js -p"
+    "js-start": "webpack src/javascript/index.js --output bin/app.js -d --watch",
+    "js-build": "webpack src/javascript/index.js --outpout bin/app.js -p",
+    "css-build": "node-sass --omit-source-map-url src/sass/styles.scss src/css/styles.css",
+    "css-start": "npm run css-build -- --watch",
+    "build": "npm run css-build && npm run js-build",
+    "start": "npm-run-all --parallel css-start js-start"
   },
   "repository": {
     "type": "git",
@@ -23,6 +27,9 @@
     "@babel/plugin-transform-react-jsx": "^7.8.3",
     "@babel/preset-env": "^7.8.7",
     "babel-loader": "^8.0.6",
+    "bulma": "^0.8.0",
+    "node-sass": "^4.13.1",
+    "npm-run-all": "^4.1.5",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11"
   }
