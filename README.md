@@ -21,3 +21,12 @@ npm run build
 
 
 You can now access the webapp by opening the `index.html` file in your browser.
+
+
+# Documentation
+
+The documentation was done with jsdoc. It can be created by running
+```sh
+npm run jsdoc
+```
+You can access the documentation by opening the `doc/jsdoc/index.html` file in your browser.
