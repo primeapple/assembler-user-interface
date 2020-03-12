@@ -1,0 +1,40 @@
+1. ORGANISATORISCHES
+- Abgabe später okay? Bis wann?
+- Implementierung: Datenstruktur an Backend senden, Backend berechnet nächste Werte
+
+
+2. AUFGABE
+- Datenstruktur:
+	## Programm:
+	- Register (Inhalte Zahlen, Darstellung zwischen Binär, Hexa und Dezimal ändern)
+		-Registerbank 32 Darstellung momentan als Hexadezimalzahl (bis ffffffff = 4.294.967.295) r[0] immer 0
+		- Befehlszähler (Gibt Adresse des nächsten Befehls an)
+		- Ein/Ausgabe-Register --> Eingabegaben direkt reinschreiben, Ausgaben auslesen, exc-Register?
+	- Instruktionsspeicher: Addresse|Inhalt|Befehl, gibt Befehle im Quellcode an, was bedeutet Inhalt?
+	- Datenspeicher: Adresse|Inhalt entspricht Hauptspeicher, hat Adressen (Zahl) und Inhalte (Zahl)
+	- Steuerleitungen: Leitungsname|Wert, gibt Informationen zu aufgetretenen Ereignissen an
+	
+	- Menge von Pseudoinstruktionen
+	- Stack und Unterprogrammerweiterung(?)
+	- weitere?
+
+	## Frontend:
+	- jeweilige Darstellung der Zahlen in den Speichern/Registern (Binär, Dual, Deziaml)
+	- History der letzten Befehle?
+	- Breakpoints
+	- evtl. Theme, etc.
+
+
+- Views:
+	- Editor View
+		- HilfeLeiste an der Seite/Unten, die Erklärungen zu den momentanen Befehlen angibt)
+		- Systemnachrichten an der Seite
+		- SAVE, LOAD, ÜBERSETZEN, AUSFÜHREN
+		- AUFLÖSEN wird nur bei SAVE gebraucht
+		- Liste mit Beispielprogrammen
+		- Link zu EXECUTE Mode (ausgegraut, wenn noch nicht übersetzt) oder (versucht automatisch zu übersetzen)?
+	- Execution View
+		- Step, RunAllCommands, Reset etc.
+		- linke Seite Programm mit Breakpoints, aktiver Zeile, etc.
+		- rechte Seite Register,Speicher, etc.
+		- eventuell Möglichkeit zur Auswahl, welche Datenfelder angezeigt werden sollen
