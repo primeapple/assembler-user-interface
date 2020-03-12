@@ -1,0 +1,29 @@
+{
+  "name": "assembler-user-interface",
+  "version": "1.0.0",
+  "description": "Dieses Projekt enthält den Prototyp des Philios Assemblers. Es dient als Modulleistung von Toni Müller im Modul \"Clientseitige Webanwendungen\" im WS19/20 der MLU.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack src/index.js --output bin/app.js -d --watch",
+    "build": "webpack src/index.js --outpout bin/app.js -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://ajwxf@gitlab.informatik.uni-halle.de/ajwxf/assembler-user-interface.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mithril": "^2.0.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-transform-react-jsx": "^7.8.3",
+    "@babel/preset-env": "^7.8.7",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
