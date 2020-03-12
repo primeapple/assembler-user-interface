@@ -11,12 +11,12 @@ npm install
 Now you have to build the App. Use   
 ```sh
 # watching for changes:
-npm start
+npm run start
 ```
 or
 ```sh
 # build production app:
-npm run-script build
+npm run build
 ```
 
 
