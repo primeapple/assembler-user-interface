@@ -1,4 +1,23 @@
 @charset "utf-8";
+
+// Page should not be scrollable
+$body-overflow-y:hidden;
+
+// TODO: find better solution for this...
+.is-30-height {
+    height: 30vh;
+    overflow: auto;
+};
+.is-50-height {
+    height: 50vh;
+    overflow: auto;
+};
+
+@import "../../node_modules/bulma/sass/utilities/initial-variables.sass";
+$box-color: $green;
+$box-background-color: $grey-darker;
+
+
 @import "../../node_modules/bulma/bulma.sass";
 
 
