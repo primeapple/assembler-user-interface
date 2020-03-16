@@ -8,8 +8,8 @@ export default class EditorView {
                 <div class="columns">
                     <div class="column is-3">
                         <div class="buttons">
-                            <button class="button is-primary">Speichern</button>
-                            <button class="button is-primary">Laden</button>
+                            <button class="button is-info">Speichern</button>
+                            <button class="button is-info">Laden</button>
                         </div>
                     </div>
                     <div class="column is-3">
