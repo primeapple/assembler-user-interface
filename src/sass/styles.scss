@@ -1,37 +1,42 @@
 @charset "utf-8";
 
 body, html {
-    height: 100%
+    height: 100%;
 }
+
 
 // Page should not be scrollable
 $body-overflow-y:hidden;
 
-// // TODO: find better solution for this...
-.is-10-height {
-    height: 10%;
+.parentheight {
+    height: 100% !important;
 }
-.is-30-height {
-    height: 30vh;
-};
-.is-40-height {
-    height: 40%;
-};
-.is-50-height {
-    height: 50vh;
-};
-.is-60-height {
-    height: 60vh;
-};
-.is-80-height {
-    height: 80vh;
-};
 
+.parentwidth {
+    width: 100% !important;
+}
+
+.flexbox-vertical-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-grow {
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.flex-base-height-300 {
+    flex: 0 0 300px;
+    min-height: 300px;
+}
 
 .is-scrollable {
+    height: 100%;
     overflow: auto;
-    display: block;
 }
+
+
 
 @import "../../node_modules/bulma/sass/utilities/initial-variables.sass";
 $box-color: $green;
