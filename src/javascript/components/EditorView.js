@@ -22,19 +22,20 @@ export default class EditorView {
                                 </span>
                                 </button>
                             </div>
+                            {/* TODO: add sample Programs */}
                             <div class="dropdown-menu" id="dropdown-menu" role="menu">
                                 <div class="dropdown-content">
                                     <a href="#" class="dropdown-item">
-                                        Dropdown item
+                                        Sample program 1
                                     </a>
                                     <a class="dropdown-item">
-                                        Other dropdown item
+                                        Sample program 2
                                     </a>
                                     <a href="#" class="dropdown-item">
-                                        Active dropdown item
+                                        Sample program 3
                                     </a>
                                     <a href="#" class="dropdown-item">
-                                        Other dropdown item
+                                        Sample program 4
                                     </a>
                                 </div>
                             </div>
