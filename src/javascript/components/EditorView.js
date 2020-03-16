@@ -62,10 +62,8 @@ export default class EditorView {
                     </div>
                     <div class="column is-3">
                         <div class="parentheight flexbox-vertical-container">
-                            <div class="flex-grow panel flexbox-vertical-container has-border">
-                                <p class="control">
-                                    <input class="input" type="text" placeholder="Suche nach Befehlen"></input>
-                                </p>
+                            <div class="flex-grow panel flexbox-vertical-container has-background-lightgrey">
+                                <input class="" type="text" placeholder="Suche nach Befehlen"></input>
                                 <div class="is-scrollable flex-grow">
                                     <table class="table is-striped">
                                         <tbody>
