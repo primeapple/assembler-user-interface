@@ -35,177 +35,175 @@ export default class ExecutionView {
                         </div>
                     </div>
                     <div class="column is-6">
-                        <div class="parentheight flexbox-vertical-container">
-                            <div class="flexbox-vertical-container panel has-background-lightgrey">
-                                <p class="panel-heading">
-                                    <div class="tabs">
-                                        <ul>
-                                            <li class="is-active"><a>Register</a></li>
-                                            <li><a>Ein-/Ausgabereg.</a></li>
-                                            <li><a>Massenspeicher</a></li>
-                                            <li><a>Instruktionsspeicher</a></li>
-                                            <li><a>Steuerleitungen</a></li>
-                                        </ul>
-                                    </div>
-                                </p>
-                                <div class="is-scrollable flex-grow">
-                                    <table class="table is-striped parentwidth">
-                                        <tbody>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Register 1</td>
-                                                <td>X30bC</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                        <div class="parentheight flexbox-vertical-container flex-grow panel has-background-lightgrey">
+                            <p class="panel-heading">
+                                <div class="tabs">
+                                    <ul>
+                                        <li class="is-active"><a>Register</a></li>
+                                        <li><a>Ein-/Ausgabereg.</a></li>
+                                        <li><a>Massenspeicher</a></li>
+                                        <li><a>Instruktionsspeicher</a></li>
+                                        <li><a>Steuerleitungen</a></li>
+                                    </ul>
                                 </div>
+                            </p>
+                            <div class="is-scrollable flex-grow">
+                                <table class="table is-striped parentwidth">
+                                    <tbody>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Register 1</td>
+                                            <td>X30bC</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

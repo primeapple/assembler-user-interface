@@ -61,43 +61,41 @@ export default class EditorView {
                         </div>
                     </div>
                     <div class="column is-3">
-                        <div class="parentheight flexbox-vertical-container">
-                            <div class="flex-grow panel flexbox-vertical-container has-background-lightgrey">
-                                <input class="" type="text" placeholder="Suche nach Befehlen"></input>
-                                <div class="is-scrollable flex-grow">
-                                    <table class="table is-striped">
-                                        <tbody>
-                                            <tr>
-                                                <td>Befehl 1</td>
-                                                <td>Dieser Befehl macht ganz verückte sachen. Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Befehl 1</td>
-                                                <td>Dieser Befehl macht ganz verückte sachen. Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Befehl 1</td>
-                                                <td>Dieser Befehl macht ganz verückte sachen. Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Befehl 1</td>
-                                                <td>Dieser Befehl macht ganz verückte sachen. Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Befehl 1</td>
-                                                <td>Dieser Befehl macht ganz verückte sachen. Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Befehl 1</td>
-                                                <td>Dieser Befehl macht ganz verückte sachen. Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                        <div class="parentheight flex-grow panel flexbox-vertical-container has-background-lightgrey">
+                            <input class="" type="text" placeholder="Suche nach Befehlen"></input>
+                            <div class="is-scrollable flex-grow">
+                                <table class="table is-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>Befehl 1</td>
+                                            <td>Dieser Befehl macht ganz verückte sachen. Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Befehl 1</td>
+                                            <td>Dieser Befehl macht ganz verückte sachen. Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Befehl 1</td>
+                                            <td>Dieser Befehl macht ganz verückte sachen. Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Befehl 1</td>
+                                            <td>Dieser Befehl macht ganz verückte sachen. Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Befehl 1</td>
+                                            <td>Dieser Befehl macht ganz verückte sachen. Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Befehl 1</td>
+                                            <td>Dieser Befehl macht ganz verückte sachen. Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            <div class="box flex-base-height-300">
-                                <p>Systemnachrichten</p>
-                            </div>
+                        </div>
+                        <div class="box flex-base-height-300">
+                            <p>Systemnachrichten</p>
                         </div>
                     </div>
                 </div>
