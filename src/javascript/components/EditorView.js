@@ -1,4 +1,5 @@
 var m = require("mithril");
+import Editor from './editor/Editor.js'
 
 export default class EditorView {
 
@@ -56,8 +57,8 @@ export default class EditorView {
                 </div>
                 <div class="columns flex-grow">
                     <div class="column is-9">
-                        <div class="parentheight">
-                            <textarea class="parentheight parentwidth" placeholder="Your Code"></textarea>
+                    <div class="parentheight has-border">
+                            <Editor />
                         </div>
                     </div>
                     <div class="column is-3">

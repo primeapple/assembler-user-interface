@@ -1,8 +1,19 @@
 var m = require("mithril");
+import Editor from './editor/Editor.js'
 
 export default class ExecutionView {
 
+    getCodemirrorSettings() {
+        return {
+            readOnly: true,
+        }
+    }
+
     view(vnode) {
+        let settings = {
+            set1: true,
+            set2: false,
+        }
         return (
             <main class="flexbox-vertical-container parentheight">
                 <div class="columns">
@@ -30,8 +41,8 @@ export default class ExecutionView {
                 </div>
                 <div class="columns flex-grow">
                     <div class="column is-6">
-                        <div class="parentheight">
-                            <textarea class="parentheight parentwidth" placeholder="Your Code"></textarea>
+                        <div class="parentheight has-border">
+                            <Editor settings={this.getCodemirrorSettings()}/>
                         </div>
                     </div>
                     <div class="column is-6">
