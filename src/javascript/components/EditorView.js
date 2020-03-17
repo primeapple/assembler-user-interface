@@ -1,8 +1,17 @@
+/**
+ * The EditorView component
+ * @module EditorView 
+ */
+
 var m = require("mithril");
 import Editor from './editor/Editor.js'
 
 export default class EditorView {
 
+    /**
+     * The view function for mithril
+     * @param {vnode} vnode 
+     */
     view(vnode) {
         return (
             <main class="flexbox-vertical-container parentheight">

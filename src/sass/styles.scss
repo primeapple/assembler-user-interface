@@ -1,5 +1,11 @@
 @charset "utf-8";
 
+@import "../../node_modules/bulma/sass/utilities/initial-variables.sass";
+// @import "../../node_modules/bulma/sass/utilities/derived-variables.sass";
+$box-color: $green;
+$box-background-color: $grey-darker;
+
+
 body, html {
     height: 100%;
 }
@@ -49,17 +55,24 @@ $body-overflow-y:hidden;
 
 .has-border {
     border: 2px solid lightgrey;
-    border-radius: 5px;}
+    border-radius: 5px;
+}
 
 // Codemirror config:
 .CodeMirror {
     height: 100% !important;
 }
 
+.CodeMirror-gutter-elt {
+    left: 10px !important;
+}
 
-@import "../../node_modules/bulma/sass/utilities/initial-variables.sass";
-$box-color: $green;
-$box-background-color: $grey-darker;
+//TODO: change color to primary?
+.Codemirror-custom-breakpoint {
+    width: 10px;
+    color: $turquoise;
+}
+
 
 
 @import "../../node_modules/bulma/bulma.sass";

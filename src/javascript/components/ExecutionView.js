@@ -1,14 +1,27 @@
+/**
+ * The ExecutionView component
+ * @module ExecutionView 
+ */
+
 var m = require("mithril");
 import Editor from './editor/Editor.js'
 
 export default class ExecutionView {
 
+    /**
+     * The additional codemirror settings for the ExecutionView
+     * @param {vnode} vnode 
+     */
     getCodemirrorSettings() {
         return {
             readOnly: true,
         }
     }
 
+    /**
+     * The view function for mithril
+     * @param {vnode} vnode 
+     */
     view(vnode) {
         let settings = {
             set1: true,
@@ -42,7 +55,7 @@ export default class ExecutionView {
                 <div class="columns flex-grow">
                     <div class="column is-6">
                         <div class="parentheight has-border">
-                            <Editor settings={this.getCodemirrorSettings()}/>
+                            <Editor settings={this.getCodemirrorSettings()} breakpoints/>
                         </div>
                     </div>
                     <div class="column is-6">
