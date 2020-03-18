@@ -67,10 +67,15 @@ $body-overflow-y:hidden;
     left: 10px !important;
 }
 
-//TODO: change color to primary?
+// TODO: change color to primary?
 .Codemirror-custom-breakpoint {
     width: 10px;
     color: $turquoise;
+}
+
+// for the commandTable
+.searched-text {
+    background: $yellow;
 }
 
 

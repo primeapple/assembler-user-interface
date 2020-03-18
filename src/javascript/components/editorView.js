@@ -19,8 +19,8 @@ export default class EditorView {
                 <div class="columns has-margin-10">
                     <div class="column is-3">
                         <div class="buttons">
-                            <button class="button is-info">Speichern</button>
-                            <button class="button is-info">Laden</button>
+                            <button class="button is-success">Übersetzen</button>
+                            <button class="button is-success" disabled>Ausführen</button>
                         </div>
                     </div>
                     <div class="column is-3">
@@ -53,9 +53,9 @@ export default class EditorView {
                         </div>
                     </div>
                     <div class="column is-3">
-                        <div class="buttons is-right">
-                            <button class="button is-success">Übersetzen</button>
-                            <button class="button is-success" disabled>Ausführen</button>
+                        <div class="buttons">
+                            <button class="button is-info">Speichern</button>
+                            <button class="button is-info">Laden</button>
                         </div>
                     </div>
                     <div class="column is-3">
@@ -66,12 +66,12 @@ export default class EditorView {
                     </div>
                 </div>
                 <div class="columns has-margin-10 flex-grow">
-                    <div class="column is-9">
+                    <div class="column is-6">
                     <div class="parentheight has-border">
                             <Editor />
                         </div>
                     </div>
-                    <div class="column is-3">
+                    <div class="column is-6">
                         <div class="parentheight flexbox-vertical-container">
                             <CommandTable />
                             <div class="box flex-base-height-300">

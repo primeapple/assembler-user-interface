@@ -4,6 +4,10 @@
         ["@babel/plugin-transform-react-jsx", {
             "pragma": "m",
             "pragmaFrag": "'['"
-        }]
+        }
+        ],
+        [
+            "@babel/plugin-proposal-class-properties"
+        ]
     ]
 }

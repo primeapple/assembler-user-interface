@@ -28,6 +28,7 @@ export default class Editor {
     handleBreakpoints(codemirror, line) {
         var info = codemirror.lineInfo(line);
 
+        // TODO create elem with mithril
         function breakPointElemeent(hasBreakpoint) {
             if (hasBreakpoint) return null;
             else {

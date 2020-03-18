@@ -4,4 +4,4 @@ import ExecutionView from './components/executionView.js'
 var m = require ("mithril");
 
 
-m.render(document.body, <EditorView />);
+m.mount(document.body, {view: () => <EditorView />});
