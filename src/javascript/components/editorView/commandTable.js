@@ -24,8 +24,8 @@ export default class CommandTable {
     view(vnode) {
         return (
             <div class="parentheight flex-grow panel flexbox-vertical-container has-background-lightgrey">
-                <input type="text" placeholder="Suche nach Befehlen"></input>
-                <div class="is-scrollable flex-grow">
+                <input class="has-margin-10" type="text" placeholder="Suche nach Befehlen"></input>
+                <div class="is-scrollable has-margin-10 flex-grow">
                     <table class="table is-striped">
                         <tbody>
                             {this.showCommands()}

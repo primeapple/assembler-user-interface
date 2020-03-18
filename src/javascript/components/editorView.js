@@ -16,7 +16,7 @@ export default class EditorView {
     view(vnode) {
         return (
             <main class="flexbox-vertical-container parentheight">
-                <div class="columns">
+                <div class="columns has-margin-10">
                     <div class="column is-3">
                         <div class="buttons">
                             <button class="button is-info">Speichern</button>
@@ -65,16 +65,18 @@ export default class EditorView {
                         </div>
                     </div>
                 </div>
-                <div class="columns flex-grow">
+                <div class="columns has-margin-10 flex-grow">
                     <div class="column is-9">
                     <div class="parentheight has-border">
                             <Editor />
                         </div>
                     </div>
                     <div class="column is-3">
-                        <CommandTable />
-                        <div class="box flex-base-height-300">
-                            <p>Systemnachrichten</p>
+                        <div class="parentheight flexbox-vertical-container">
+                            <CommandTable />
+                            <div class="box flex-base-height-300">
+                                <p>Systemnachrichten</p>
+                            </div>
                         </div>
                     </div>
                 </div>
