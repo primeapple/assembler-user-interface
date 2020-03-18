@@ -1,7 +1,7 @@
-import EditorView from './components/EditorView.js'
-import ExecutionView from './components/ExecutionView.js'
+import EditorView from './components/editorView.js'
+import ExecutionView from './components/executionView.js'
 
 var m = require ("mithril");
 
 
-m.render(document.body, <ExecutionView />);
+m.render(document.body, <EditorView />);

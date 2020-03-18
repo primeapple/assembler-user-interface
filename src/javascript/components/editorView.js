@@ -4,7 +4,8 @@
  */
 
 var m = require("mithril");
-import Editor from './editor/Editor.js'
+import Editor from './editor.js'
+import CommandTable from './editorView/commandTable';
 
 export default class EditorView {
 
@@ -71,39 +72,7 @@ export default class EditorView {
                         </div>
                     </div>
                     <div class="column is-3">
-                        <div class="parentheight flex-grow panel flexbox-vertical-container has-background-lightgrey">
-                            <input class="" type="text" placeholder="Suche nach Befehlen"></input>
-                            <div class="is-scrollable flex-grow">
-                                <table class="table is-striped">
-                                    <tbody>
-                                        <tr>
-                                            <td>Befehl 1</td>
-                                            <td>Dieser Befehl macht ganz verückte sachen. Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Befehl 1</td>
-                                            <td>Dieser Befehl macht ganz verückte sachen. Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Befehl 1</td>
-                                            <td>Dieser Befehl macht ganz verückte sachen. Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Befehl 1</td>
-                                            <td>Dieser Befehl macht ganz verückte sachen. Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Befehl 1</td>
-                                            <td>Dieser Befehl macht ganz verückte sachen. Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Befehl 1</td>
-                                            <td>Dieser Befehl macht ganz verückte sachen. Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.Dieser Befehl macht ganz verückte sachen.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        <CommandTable />
                         <div class="box flex-base-height-300">
                             <p>Systemnachrichten</p>
                         </div>
