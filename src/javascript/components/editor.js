@@ -58,7 +58,7 @@ export default class Editor {
     }
 
     /**
-     * The oninit function for mithril
+     * The oncreate function for mithril
      * @param {vnode} vnode 
      */
     oncreate(vnode) {

@@ -1,4 +1,4 @@
-import EditorView from './components/editorView.js'
+import EditorView from './routes/editorView.js'
 import ExecutionView from './components/executionView.js'
 
 var m = require ("mithril");

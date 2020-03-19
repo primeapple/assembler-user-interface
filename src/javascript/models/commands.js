@@ -1,7 +1,7 @@
 /**
  * This is the overview of all the commands available in pHILOS
  */
-export const commandModel = [
+export const commands = [
     {
         name: "ldd R[i] R[j] k",
         description: "lädt den Inhalt der durch R[i]+k adressierten Hauptspeicherzelle nach R[j]"

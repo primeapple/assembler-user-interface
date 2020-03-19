@@ -5,7 +5,7 @@
 
 
 var m = require("mithril");
-import {commandModel} from './models/commandModel.js';
+import {commands} from '../../models/commands.js';
 
 export default class CommandTable {
 
@@ -19,7 +19,7 @@ export default class CommandTable {
      * Highlights found search strings.
      */
     showCommands() {
-        return commandModel.filter((command) => {
+        return commands.filter((command) => {
                 return command.name.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
                 command.description.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase())
             }).map(command => {
@@ -55,7 +55,7 @@ export default class CommandTable {
             <div class="parentheight flex-grow panel flexbox-vertical-container has-background-grey-lighter">
                 <input class="has-margin-10" type="text" placeholder="Suche nach Befehlen" oninput={(ev) => this.searchText=ev.target.value}></input>
                 <div class="is-scrollable has-margin-10 flex-grow">
-                    <table class="table is-striped">
+                    <table class="table is-striped is-fullwidth">
                         <tbody>
                             {this.showCommands()}
                         </tbody>
