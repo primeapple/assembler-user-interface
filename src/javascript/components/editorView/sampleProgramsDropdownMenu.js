@@ -4,11 +4,11 @@
  */
 
 var m = require("mithril");
-import {samplePrograms} from '../../models/samplePrograms.js';
+import {samplePrograms} from "../../models/samplePrograms";
 
 export default class SampleProgramsDropdownMenu {
     
-    program;
+    currentProgram;
     dropdownEnabled = false;
 
     /**
@@ -36,13 +36,13 @@ export default class SampleProgramsDropdownMenu {
      * @param {SampleProgram} program a sample program
      */
     handleDropdownClick(program) {
-        this.program.reset();
-        this.program.commands = program.commands;
-        this.program.name = program.name;
+        this.currentProgram.reset();
+        this.currentProgram.commands = program.commands;
+        this.currentProgram.name = program.name;
         if ("errorMessage" in program) {
-            this.program.errorMessage = program.errorMessage;
+            this.currentProgram.errorMessage = program.errorMessage;
         } else {
-            this.program.isExecutable = true;
+            this.currentProgram.isExecutable = true;
         }
         this.dropdownEnabled = false;
     }
@@ -66,7 +66,7 @@ export default class SampleProgramsDropdownMenu {
      * @param {vnode} vnode 
      */
     oninit(vnode) {
-        this.program = vnode.attrs.program;
+        this.currentProgram = vnode.attrs.program;
     }
 
     /**
@@ -81,7 +81,7 @@ export default class SampleProgramsDropdownMenu {
                     <div class="dropdown-trigger parentwidth">
                         <button class="button parentwidth" aria-haspopup="true" aria-controls="dropdown-menu"
                             onclick={e=>this.dropdownEnabled = !this.dropdownEnabled}>
-                            <span>{this.program.name === "unknown" ? "Beispielprogramme" : this.program.name}</span>
+                            <span>{this.currentProgram.name === "unknown" ? "Beispielprogramme" : this.currentProgram.name}</span>
                             <span class="icon is-small">
                                 <i class="fas fa-angle-down" aria-hidden="true"></i>
                             </span>

@@ -8,7 +8,7 @@ var m = require("mithril");
 
 export default class CompileExecute {
 
-    program;
+    currentProgram;
 
     /**
      * This functions checks if the program is executable.
@@ -16,7 +16,7 @@ export default class CompileExecute {
      * and `this.program.errorMessage`
      */
     compile() {
-        this.program.isExecutable = true;
+        this.currentProgram.isExecutable = true;
     }
 
     // TODO:
@@ -32,7 +32,7 @@ export default class CompileExecute {
      * @param {vnode} vnode 
      */
     oninit(vnode) {
-        this.program = vnode.attrs.program;
+        this.currentProgram = vnode.attrs.program;
     }
 
     /**
@@ -44,7 +44,7 @@ export default class CompileExecute {
             <div class="column is-3">
                 <div class="buttons">
                     <button class="button is-success" onclick={e => this.compile()}>Übersetzen</button>
-                    <button class="button is-success" onclick={e => this.execute()} disabled={!this.program.isExecutable}>Ausführen</button>
+                    <button class="button is-success" onclick={e => this.execute()} disabled={!this.currentProgram.isExecutable}>Ausführen</button>
                 </div>
             </div>
         );

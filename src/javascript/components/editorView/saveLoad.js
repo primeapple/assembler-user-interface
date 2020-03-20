@@ -10,18 +10,17 @@ export default class SaveLoad {
     /**
      * The current state of the program
      */
-    program;
+    currentProgram;
 
     /**
      * Reads a new file, sets the current program to this file
      * @param {file} file 
      */
     upload(file) {
-        this.program.reset();
+        this.currentProgram.reset();
         var reader = new FileReader();
-        reader.onload = (e => this.program.commands = e.target.result.split("\n"));
+        reader.onload = (e => this.currentProgram.commands = e.target.result.split("\n"));
         reader.readAsText(file);
-        console.log(this.program);
     }
 
     /**
@@ -29,9 +28,9 @@ export default class SaveLoad {
      */
     download() {
         var a = document.createElement("a");
-        var file = new Blob([this.program.toText()], {type: "text/plain"});
+        var file = new Blob([this.currentProgram.toText()], {type: "text/plain"});
         a.href = URL.createObjectURL(file);
-        a.download = this.program.name + ".json";
+        a.download = this.currentProgram.name + ".json";
         a.click();  
     }
 
@@ -40,7 +39,7 @@ export default class SaveLoad {
      * @param {vnode} vnode 
      */
     oninit(vnode) {
-        this.program = vnode.attrs.program;
+        this.currentProgram = vnode.attrs.program;
     }
 
     /**

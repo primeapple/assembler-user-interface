@@ -9,18 +9,18 @@ import CompileExecute from "../components/editorView/compileExecute";
 import SampleProgramsDropdownMenu from "../components/editorView/sampleProgramsDropdownMenu";
 import SaveLoad from "../components/editorView/saveLoad"
 import CommandTable from "../components/editorView/commandTable";
-import CurrentProgram from "../classes/currentProgram";
+import Program from "../classes/program";
 
 export default class EditorView {
 
-    program;
+    currentProgram;
 
     /**
      * The oninit function for mithril
      * @param {vnode} vnode 
      */
     oninit() {
-        this.program = new CurrentProgram();
+        this.currentProgram = new Program();
     }
 
     /**
@@ -31,9 +31,9 @@ export default class EditorView {
         return (
             <main class="flexbox-vertical-container parentheight">
                 <div class="columns has-margin-10">
-                    <CompileExecute program={this.program} />
-                    <SampleProgramsDropdownMenu program={this.program} />
-                    <SaveLoad program={this.program} />
+                    <CompileExecute program={this.currentProgram} />
+                    <SampleProgramsDropdownMenu program={this.currentProgram} />
+                    <SaveLoad program={this.currentProgram} />
                     <div class="column is-3">
                         <div class="buttons is-right">
                             <button class="button is-info">Hilfe</button>
@@ -52,7 +52,7 @@ export default class EditorView {
                             <CommandTable />
                             <div class="box flex-base-height-300">
                                 <p>Systemnachrichten:</p>
-                                {this.program.errorMessage}
+                                {this.currentProgram.errorMessage}
                             </div>
                         </div>
                     </div>

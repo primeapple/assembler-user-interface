@@ -4,7 +4,7 @@
  */
 
 var m = require("mithril");
-import Editor from './editor.js'
+import Editor from "./editor"
 
 export default class ExecutionView {
 

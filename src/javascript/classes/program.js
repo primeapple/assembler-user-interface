@@ -1,7 +1,7 @@
 /**
  * This is the model for the current programm, that is passed around in the webapp
  */
-export default class CurrentProgram {
+export default class Program {
     /**
      * The commands of the program, as array
      */
