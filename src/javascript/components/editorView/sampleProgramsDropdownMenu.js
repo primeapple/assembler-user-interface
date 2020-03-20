@@ -1,5 +1,5 @@
 /**
- * The SampleProgramsDropdownMenu (top buttons, aka Compile, Execute, sample Programs, Save, Load, etc.) component
+ * The SampleProgramsDropdownMenu component
  * @module SampleProgramsDropdownMenu 
  */
 
@@ -40,9 +40,9 @@ export default class SampleProgramsDropdownMenu {
         this.currentProgram.commands = program.commands;
         this.currentProgram.name = program.name;
         if ("errorMessage" in program) {
-            this.currentProgram.errorMessage = program.errorMessage;
+            this.currentProgram.setStatusNotExecutable(program.errorMessage)
         } else {
-            this.currentProgram.isExecutable = true;
+            this.currentProgram.setStatusExecutable();
         }
         this.dropdownEnabled = false;
     }
