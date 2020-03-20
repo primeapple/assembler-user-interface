@@ -13,7 +13,13 @@ import Program from "../classes/program";
 
 export default class EditorView {
 
+    /**
+     * the current Program, of class Program
+     */
     currentProgram;
+    /**
+     * the message box, defines the content of the message box
+     */
     messageBox = {
         header : "Systemnachrichten:",
         message : null,
@@ -48,7 +54,7 @@ export default class EditorView {
                 <div class="columns has-margin-10 flex-grow">
                     <div class="column is-6">
                     <div class="parentheight has-border">
-                            <Editor />
+                            <Editor program={this.currentProgram}/>
                         </div>
                     </div>
                     <div class="column is-6">

@@ -9,6 +9,10 @@ require("codemirror/addon/selection/active-line");
 
 export default class Editor {
 
+    currentProgram;
+    settings;
+    codemirror;
+
     /**
      * The default settings for the Editor
      */
@@ -17,6 +21,7 @@ export default class Editor {
             lineNumbers: true,
             lineWrapping: true,
             styleActiveLine: true,
+            gutters: ["Codemirror-custom-breakpoint", "CodeMirror-linenumbers"],
         }
     }
 
@@ -48,13 +53,23 @@ export default class Editor {
      * @param {object} settings The settings (in addition to the default settings) for codemirror to use
      * @param {boolean} breakpoints True, if we support breakpoints, false if not
      */
-    createCodeMirror(element, settings, breakpoints) {
-        let finalSettings = Object.assign({}, this.getDefaultSettings(), settings);
-        finalSettings.gutters = ["Codemirror-custom-breakpoint", "CodeMirror-linenumbers"];
-        var cm = codeMirror.fromTextArea(element, finalSettings);
+    createCodeMirror(element, breakpoints) {
+        let cm = codeMirror.fromTextArea(element, this.settings);
         if (breakpoints) {
             cm.on("gutterClick", this.handleBreakpoints);
         }
+        cm.on("change", (c, changeOb) => {
+            if (!(changeOb.origin === "setValue")) {
+                this.currentProgram.setCommands(c.getValue());
+                m.redraw();
+            }
+        });
+        this.codemirror = cm;
+    }
+
+    oninit(vnode) {
+        this.currentProgram = vnode.attrs.program;
+        this.settings = Object.assign({}, this.getDefaultSettings(), vnode.attrs.settings);
     }
 
     /**
@@ -62,7 +77,19 @@ export default class Editor {
      * @param {vnode} vnode 
      */
     oncreate(vnode) {
-        this.createCodeMirror(vnode.dom, vnode.attrs.settings, vnode.attrs.breakpoints);
+        this.createCodeMirror(vnode.dom, vnode.attrs.breakpoints);
+    }
+    
+    /**
+     * The onupdate function for mithril
+     * @param {vnode} vnode 
+     */
+    onupdate(vnode) {
+        // on each DOM update by mithril, reset the codemirror value, in case it changed
+        // (for example by choosing sample program or loading program)
+        if (this.codemirror.getValue() !== this.currentProgram.commands.join("\n")) {
+            this.codemirror.setValue(this.currentProgram.commands.join("\n"));
+        }
     }
 
     /**
@@ -71,8 +98,7 @@ export default class Editor {
      */
     view(vnode) {
         return (
-            <textarea>
-            </textarea>
-        )
+            <textarea></textarea>
+        );
     }
 }

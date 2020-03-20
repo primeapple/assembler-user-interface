@@ -42,6 +42,11 @@ export default class Program {
         this.constructor();
     }
     
+    setCommands(programText) {
+        this.reset();
+        this.commands = programText.split("\n");
+    }
+
     /**
      * Sets the status of this program to EXECUTABLE
      */
