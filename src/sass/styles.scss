@@ -39,9 +39,13 @@ $body-overflow-y:hidden;
     min-height: 0;
 }
 
-.flex-base-height-300 {
-    flex: 0 0 300px;
-    min-height: 300px;
+.flex-base-height-200 {
+    flex: 0 0 200px;
+    min-height: 200px;
+}
+
+.linebreak {
+    white-space: pre-wrap;
 }
 
 .is-scrollable {

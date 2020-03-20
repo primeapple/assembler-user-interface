@@ -48,9 +48,9 @@ export default class EditorView {
                         </div>
                     </div>
                     <div class="column is-6">
-                        <div class="parentheight flexbox-vertical-container">
+                        <div class="parentheight flexbox-vertical-container linebreak">
                             <CommandTable />
-                            <div class="box flex-base-height-300">
+                            <div class="box flex-base-height-200">
                                 <p>Systemnachrichten:</p>
                                 {this.currentProgram.errorMessage}
                             </div>

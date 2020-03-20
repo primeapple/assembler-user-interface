@@ -28,7 +28,7 @@ export const samplePrograms = [
             "# this program is not executable",
             "addi r0 r1 r2",
         ],
-        errorMessage: "Der Befehl \"addi R[i] R[j] R[k]\" in Zeile 2 existiert nicht.\n Meintest du \"addi R[i] R[j] k\" oder \"add R[i] R[j] R[k]\"?"
+        errorMessage: "Der Befehl \"addi R[i] R[j] R[k]\" in Zeile 2 existiert nicht.\nMeintest du \"addi R[i] R[j] k\" oder \"add R[i] R[j] R[k]\"?"
     },
     {
         name: "Nicht ausführbares Programm #2",
@@ -37,6 +37,6 @@ export const samplePrograms = [
             "addi r0 r1 1",
             "mult r0 r1 r1",
         ],
-        errorMessage: "Der Befehl \"mult R[i] R[j] R[k]\" in Zeile 3 existiert nicht.\n Kein ähnlicher Befehl gefunden"
+        errorMessage: "Der Befehl \"mult R[i] R[j] R[k]\" in Zeile 3 existiert nicht.\nKein ähnlicher Befehl gefunden"
     }
 ]
