@@ -18,7 +18,7 @@ or
 npm run build
 ```
 
-You can now access the webapp by opening the `index.html` file in your browser.
+You can now access the webapp by running `npx http-server` and visit http://localhost:8080 in your browser.
 
 
 # Documentation
