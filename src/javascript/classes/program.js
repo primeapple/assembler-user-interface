@@ -42,11 +42,15 @@ export default class Program {
         this.constructor();
     }
     
+    /**
+     * Resets all properties and sets new commands
+     * @param {string} programText The new program text
+     */
     setCommands(programText) {
         this.reset();
         this.commands = programText.split("\n");
     }
-
+    
     /**
      * Sets the status of this program to EXECUTABLE
      */

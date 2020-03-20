@@ -87,8 +87,8 @@ export default class Editor {
     onupdate(vnode) {
         // on each DOM update by mithril, reset the codemirror value, in case it changed
         // (for example by choosing sample program or loading program)
-        if (this.codemirror.getValue() !== this.currentProgram.commands.join("\n")) {
-            this.codemirror.setValue(this.currentProgram.commands.join("\n"));
+        if (this.codemirror.getValue() !== this.currentProgram.toText()) {
+            this.codemirror.setValue(this.currentProgram.toText());
         }
     }
 
