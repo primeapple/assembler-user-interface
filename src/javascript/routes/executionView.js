@@ -1,14 +1,15 @@
 /**
- * The ExecutionView component
+ * The ExecutionView Route
  * @module ExecutionView 
  */
 
 var m = require("mithril");
-import Editor from "./editor"
+import Editor from "../components/editor"
 
 export default class ExecutionView {
 
     currentProgram;
+    breakpoints;
 
     /**
      * The oninit function for mithril
@@ -16,6 +17,7 @@ export default class ExecutionView {
      */
     oninit(vnode) {
         this.currentProgram = vnode.attrs.program;
+        this.breakpoints = [];
         // if the user navigates manually to this page and the program is not executable, redirect
         if (!this.currentProgram.isExecutable()) {
             m.route.set("/editor");
@@ -53,7 +55,7 @@ export default class ExecutionView {
                 <div class="columns flex-grow">
                     <div class="column is-6">
                         <div class="parentheight has-border">
-                            <Editor program={this.currentProgram} settings={{readOnly: true, styleActiveLine: false}} breakpoints/>
+                            <Editor program={this.currentProgram} settings={{readOnly: true, styleActiveLine: false}} breakpoints={this.breakpoints}/>
                         </div>
                     </div>
                     <div class="column is-6">

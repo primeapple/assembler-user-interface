@@ -16,6 +16,7 @@ export default class EditorView {
      * the current Program, of class Program
      */
     currentProgram;
+
     /**
      * the message box, defines the content of the message box
      */

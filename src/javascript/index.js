@@ -1,5 +1,5 @@
 import EditorView from './routes/editorView.js'
-import ExecutionView from './components/executionView.js'
+import ExecutionView from './routes/executionView.js'
 import Program from './classes/program.js';
 
 var m = require ("mithril");

@@ -29,22 +29,27 @@ export default class Editor {
      * Defines, what happens when a breakpoint was set
      * @param {Codemirror Instance} codemirror 
      * @param {integer} line The line where a breakpoint was set, counting from 0
+     * @param {array} breakpoints A reference to this.breakpoints
      */
-    handleBreakpoints(codemirror, line) {
+    
+    handleBreakpoints(codemirror, line, breakpoints) {
         var info = codemirror.lineInfo(line);
 
         // TODO create elem with mithril
-        function breakPointElemeent(hasBreakpoint) {
-            if (hasBreakpoint) return null;
+        function breakPointElement(hasBreakpoint, breakpoints) {
+            if (hasBreakpoint) {
+                breakpoints.splice(breakpoints.indexOf(line), 1);
+                return null;
+            }
             else {
+                breakpoints.push(line);
                 var elem = document.createElement("div");
                 elem.classList.add("Codemirror-custom-breakpoint")
                 elem.innerHTML = "●";
                 return elem;
             }
         }
-
-        codemirror.setGutterMarker(line, "Codemirror-custom-breakpoint", breakPointElemeent(info.gutterMarkers));
+        codemirror.setGutterMarker(line, "Codemirror-custom-breakpoint", breakPointElement(info.gutterMarkers, breakpoints));
     }
 
     /**
@@ -56,7 +61,7 @@ export default class Editor {
     createCodeMirror(element, breakpoints, readOnly) {
         let cm = codeMirror.fromTextArea(element, this.settings);
         if (breakpoints) {
-            cm.on("gutterClick", this.handleBreakpoints);
+            cm.on("gutterClick", (c,l) => this.handleBreakpoints(c, l, this.breakpoints));
         }
         if (!readOnly) {
             cm.on("change", (c, changeOb) => {
@@ -71,6 +76,7 @@ export default class Editor {
 
     oninit(vnode) {
         this.currentProgram = vnode.attrs.program;
+        if (vnode.attrs.breakpoints) this.breakpoints = vnode.attrs.breakpoints;
         this.settings = Object.assign({}, this.getDefaultSettings(), vnode.attrs.settings);
     }
 
