@@ -8,13 +8,17 @@ import Editor from "./editor"
 
 export default class ExecutionView {
 
+    currentProgram;
+
     /**
-     * The additional codemirror settings for the ExecutionView
+     * The oninit function for mithril
      * @param {vnode} vnode 
      */
-    getCodemirrorSettings() {
-        return {
-            readOnly: true,
+    oninit(vnode) {
+        this.currentProgram = vnode.attrs.program;
+        // if the user navigates manually to this page and the program is not executable, redirect
+        if (!this.currentProgram.isExecutable()) {
+            m.route.set("/editor");
         }
     }
 
@@ -23,10 +27,6 @@ export default class ExecutionView {
      * @param {vnode} vnode 
      */
     view(vnode) {
-        let settings = {
-            set1: true,
-            set2: false,
-        }
         return (
             <main class="flexbox-vertical-container parentheight">
                 <div class="columns">
@@ -45,17 +45,15 @@ export default class ExecutionView {
                     </div>
                     <div class="column is-3"></div>
                     <div class="column is-3">
-                        <div class="field is-grouped">
-                        <button class="button is-danger control is-expanded">
-                        Zurück zum Editor
-                        </button>
-                        </div>
+                        <m.route.Link selector="button" href="/editor" class="button parentwidth is-danger control is-expanded">
+                            Zurück zum Editor
+                        </m.route.Link>
                     </div>
                 </div>
                 <div class="columns flex-grow">
                     <div class="column is-6">
                         <div class="parentheight has-border">
-                            <Editor settings={this.getCodemirrorSettings()} breakpoints/>
+                            <Editor program={this.currentProgram} settings={{readOnly: true, styleActiveLine: false}} breakpoints/>
                         </div>
                     </div>
                     <div class="column is-6">

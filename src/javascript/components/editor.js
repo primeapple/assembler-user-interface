@@ -53,17 +53,19 @@ export default class Editor {
      * @param {object} settings The settings (in addition to the default settings) for codemirror to use
      * @param {boolean} breakpoints True, if we support breakpoints, false if not
      */
-    createCodeMirror(element, breakpoints) {
+    createCodeMirror(element, breakpoints, readOnly) {
         let cm = codeMirror.fromTextArea(element, this.settings);
         if (breakpoints) {
             cm.on("gutterClick", this.handleBreakpoints);
         }
-        cm.on("change", (c, changeOb) => {
-            if (!(changeOb.origin === "setValue")) {
-                this.currentProgram.setCommands(c.getValue());
-                m.redraw();
-            }
-        });
+        if (!readOnly) {
+            cm.on("change", (c, changeOb) => {
+                if (!(changeOb.origin === "setValue")) {
+                    this.currentProgram.setCommands(c.getValue());
+                    m.redraw();
+                }
+            });
+        }
         this.codemirror = cm;
     }
 
@@ -77,7 +79,7 @@ export default class Editor {
      * @param {vnode} vnode 
      */
     oncreate(vnode) {
-        this.createCodeMirror(vnode.dom, vnode.attrs.breakpoints);
+        this.createCodeMirror(vnode.dom, vnode.attrs.breakpoints, vnode.attrs.readOnly);
     }
     
     /**
@@ -98,7 +100,7 @@ export default class Editor {
      */
     view(vnode) {
         return (
-            <textarea></textarea>
+            <textarea>{this.currentProgram.toText()}</textarea>
         );
     }
 }

@@ -27,13 +27,6 @@ export default class CompileExecute {
         }
     }
 
-    // TODO:
-    /**
-     * Here we route to the ExecutionView and give the currentProgram as a parameter
-     */
-    execute() {
-
-    }
 
     /**
      * The oninit function for mithril
@@ -53,7 +46,7 @@ export default class CompileExecute {
             <div class="column is-3">
                 <div class="buttons">
                     <button class="button is-success" onclick={e => this.compile()}>Übersetzen</button>
-                    <button class="button is-success" onclick={e => this.execute()} disabled={!this.currentProgram.isExecutable()}>Ausführen</button>
+                    <m.route.Link selector="button" href="/execution" class="button is-success" disabled={!this.currentProgram.isExecutable()}>Ausführen</m.route.Link>
                 </div>
             </div>
         );

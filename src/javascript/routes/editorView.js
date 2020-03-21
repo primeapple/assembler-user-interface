@@ -9,7 +9,6 @@ import CompileExecute from "../components/editorView/compileExecute";
 import SampleProgramsDropdownMenu from "../components/editorView/sampleProgramsDropdownMenu";
 import SaveLoad from "../components/editorView/saveLoad"
 import CommandTable from "../components/editorView/commandTable";
-import Program from "../classes/program";
 
 export default class EditorView {
 
@@ -29,8 +28,8 @@ export default class EditorView {
      * The oninit function for mithril
      * @param {vnode} vnode 
      */
-    oninit() {
-        this.currentProgram = new Program();
+    oninit(vnode) {
+        this.currentProgram = vnode.attrs.program;
     }
 
     /**
