@@ -5,6 +5,7 @@
 
 var m = require("mithril");
 import Editor from "../components/editor"
+import RunButtons from "../components/executionView/RunButtons";
 
 export default class ExecutionView {
 
@@ -31,27 +32,7 @@ export default class ExecutionView {
     view(vnode) {
         return (
             <main class="flexbox-vertical-container parentheight">
-                <div class="columns">
-                    <div class="column is-6">
-                        <div class="field is-grouped">
-                            <button class="button is-success control">Run All</button>
-                            <button class="button is-success control">Step Forwards</button>
-                            <button class="button is-success control">Step Backwards</button>
-                            <button class="button is-static control is-expanded">
-                                Momentaner Status: Zeile 
-                            </button>
-                            <p class="control">
-                                <button class="button is-warning">Reset</button>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="column is-3"></div>
-                    <div class="column is-3">
-                        <m.route.Link selector="button" href="/editor" class="button parentwidth is-danger control is-expanded">
-                            Zurück zum Editor
-                        </m.route.Link>
-                    </div>
-                </div>
+                <RunButtons breakpoints={this.breakpoints}/>
                 <div class="columns flex-grow">
                     <div class="column is-6">
                         <div class="parentheight has-border">

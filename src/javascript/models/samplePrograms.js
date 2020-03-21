@@ -7,7 +7,7 @@ export const samplePrograms = [
         name: "Schreibe 1 in R[1]",
         commands: [
             "# this is a sample program",
-            "# it just writes a 0 in R[1]",
+            "# it just writes a 1 in R[1]",
             "addi r0 r1 1",
             "# much wow"
         ]
@@ -17,7 +17,7 @@ export const samplePrograms = [
         name: "Berechne 3 x 3",
         commands: [
             "# this is a sample program",
-            "# it just writes a 0 in R[1]",
+            "# it just writes a 1 in R[1]",
             "addi r0 r1 1",
             "# much wow"
         ]

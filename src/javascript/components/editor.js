@@ -31,7 +31,6 @@ export default class Editor {
      * @param {integer} line The line where a breakpoint was set, counting from 0
      * @param {array} breakpoints A reference to this.breakpoints
      */
-    
     handleBreakpoints(codemirror, line, breakpoints) {
         var info = codemirror.lineInfo(line);
 
