@@ -78,9 +78,10 @@ export default class RegisterList {
         return this.getRegistersInCurrentRepresentation();
     }
 
+    // TODO: Does this actually work?
     /**
      * Returns the RegisterList, with changed visible attributes.
-     * For > 2 Registers behind each other, change the visibility of the registers in between to false
+     * @param {int} hideAfterNumberOfConsecutiveZeros After this amount of consecutive zeros we will set `visible` to `false` until a number different from 0 appears
      */
     getShortenedRegisterList(hideAfterNumberOfConsecutiveZeros) {
         let numberOfConsecutiveZeros = 0;
@@ -94,7 +95,7 @@ export default class RegisterList {
             if (reg.value === 0) numberOfConsecutiveZeros++;
             else numberOfConsecutiveZeros = 0;
             // always insert the unchanged register at the end of the table
-            if (index===registerList.length-1 || numberOfConsecutiveZeros < hideAfterNumberOfConsecutiveZeros || nextReg.value !== 0) {
+            if (index===registerList.length-1 || numberOfConsecutiveZeros <= hideAfterNumberOfConsecutiveZeros || nextReg.value !== 0) {
                 shortenedRegisterList.push(reg);
             } else {
                 reg.visible = false;
