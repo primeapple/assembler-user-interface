@@ -5,7 +5,7 @@
 
 
 var m = require("mithril");
-import {commands} from '../../models/commands.js';
+import {commands} from '../../data/commands.js';
 
 export default class CommandTable {
 

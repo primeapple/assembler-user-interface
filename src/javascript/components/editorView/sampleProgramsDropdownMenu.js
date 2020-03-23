@@ -4,7 +4,7 @@
  */
 
 var m = require("mithril");
-import {samplePrograms} from "../../models/samplePrograms";
+import {samplePrograms} from "../../data/samplePrograms";
 
 export default class SampleProgramsDropdownMenu {
     
