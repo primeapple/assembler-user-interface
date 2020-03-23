@@ -26,9 +26,9 @@ export default class RunButtons {
             <div class="columns">
             <div class="column is-6">
                 <div class="field is-grouped">
-                    <button class="button is-success control">Run All</button>
-                    <button class="button is-success control">Step Forwards</button>
-                    <button class="button is-success control">Step Backwards</button>
+                    <button class="button is-success control">Starte</button>
+                    <button class="button is-success control">Schritt vorwärts</button>
+                    <button class="button is-success control">Schritt zurück</button>
                     <button class="button is-static control is-expanded">
                         Momentaner Status: Zeile 
                     </button>
