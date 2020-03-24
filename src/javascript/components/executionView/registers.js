@@ -9,13 +9,20 @@ export default class Registers {
 
     registerLists;
     currentActiveTab;
+    expandCurrentRegisterList;
 
     /**
      * Creates the tabs of the Registertables
      */
     createRegisterHeading() {
         return Object.keys(this.registerLists).map(name => 
-            <li class={name === this.currentActiveTab ? "is-active" : ""} onclick={e=>this.currentActiveTab=name}><a>{name}</a></li>
+            <li class={name === this.currentActiveTab ? "is-active" : ""} 
+                onclick={e=> {
+                this.currentActiveTab = name;
+                this.expandCurrentRegisterList = this.registerLists[this.currentActiveTab].expand;}}
+            >
+                    <a>{name}</a>
+            </li>
         );
     }
 
@@ -24,14 +31,20 @@ export default class Registers {
      */
     createRegisterTable() {
         // some register Lists, we dont want to shorten (Steuerleitungen), others we want
-        let registerList = this.registerLists[this.currentActiveTab].showShortened ?
-            this.registerLists[this.currentActiveTab].list.getShortenedRegisterList(3) :
-            this.registerLists[this.currentActiveTab].list.getRegisterList();
+        let registerList = this.expandCurrentRegisterList ?
+            this.registerLists[this.currentActiveTab].list.getRegisterList() :
+            this.registerLists[this.currentActiveTab].list.getShortenedRegisterList(3);
+        console.log("registerList", registerList);
+        console.log("expandCurrent", this.expandCurrentRegisterList);
         return registerList.map(register => {
             return (
                 <tr>
-                    <td>{register.nextHidden ? "..." : register.name}</td>
-                    <td>{register.value}</td>
+                    <td onclick={e => {if (register.nextHidden) this.expandCurrentRegisterList = true}}>
+                        {register.nextHidden ? 
+                        (<span><i class="far fa-plus-square" /></span>) :
+                        register.name}
+                    </td>
+                    <td onclick={e => this.registerLists[this.currentActiveTab].changeRepresentation()}>{register.value}</td>
                 </tr>
             );
         });
@@ -44,6 +57,7 @@ export default class Registers {
     oninit(vnode) {
         this.registerLists = vnode.attrs.registerLists;
         this.currentActiveTab = Object.keys(this.registerLists)[0];
+        this.expandCurrentRegisterList = this.registerLists[this.currentActiveTab].expand;
     }
 
     /**

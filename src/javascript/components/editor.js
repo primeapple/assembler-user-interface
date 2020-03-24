@@ -10,8 +10,21 @@ require("codemirror/addon/selection/active-line");
 export default class Editor {
 
     currentProgram;
+    /**
+     * Settings given as attribute
+     */
     settings;
+    /**
+     * The active codemirror session
+     */
     codemirror;
+    /**
+     * Did we start executing yet?
+     */
+    executingStarted;
+    /**
+     * The current linenumber
+     */
 
     /**
      * The default settings for the Editor
@@ -52,14 +65,13 @@ export default class Editor {
     }
 
     /**
-     * Creates codemirror
+     * Creates codemirror, adds functions (breakpoints, updating, etc.) to it, according to the state of this class.
      * @param {dom-element} element The dom Element (has to be Textarea) for codemirror to use
-     * @param {object} settings The settings (in addition to the default settings) for codemirror to use
-     * @param {boolean} breakpoints True, if we support breakpoints, false if not
+     * @param {boolean} readOnly If false, we add a function to Codemirror, so it updates with the current program
      */
-    createCodeMirror(element, breakpoints, readOnly) {
+    createCodeMirror(element, readOnly) {
         let cm = codeMirror.fromTextArea(element, this.settings);
-        if (breakpoints) {
+        if (this.breakpoints !== undefined) {
             cm.on("gutterClick", (c,l) => this.handleBreakpoints(c, l, this.breakpoints));
         }
         if (!readOnly) {
@@ -73,9 +85,15 @@ export default class Editor {
         this.codemirror = cm;
     }
 
+    /**
+     * The oninit function for mithril
+     * @param {vnode} vnode 
+     */
     oninit(vnode) {
         this.currentProgram = vnode.attrs.program;
-        if (vnode.attrs.breakpoints) this.breakpoints = vnode.attrs.breakpoints;
+        this.breakpoints = vnode.attrs.breakpoints;
+        this.currentLine = vnode.attrs.currentLine;
+        this.executingStarted = vnode.attrs.executingStarted;
         this.settings = Object.assign({}, this.getDefaultSettings(), vnode.attrs.settings);
     }
 
@@ -84,7 +102,7 @@ export default class Editor {
      * @param {vnode} vnode 
      */
     oncreate(vnode) {
-        this.createCodeMirror(vnode.dom, vnode.attrs.breakpoints, vnode.attrs.readOnly);
+        this.createCodeMirror(vnode.dom, vnode.attrs.readOnly);
     }
     
     /**
@@ -96,6 +114,12 @@ export default class Editor {
         // (for example by choosing sample program or loading program)
         if (this.codemirror.getValue() !== this.currentProgram.toText()) {
             this.codemirror.setValue(this.currentProgram.toText());
+        }
+        if (this.currentLine !== undefined && this.executingStarted !== undefined && this.executingStarted) {
+            this.codemirror.markText({line: this.currentLine, ch: 0},
+                {line: this.currentLine, ch: this.currentProgram.commands[this.currentLine].length},
+                {className: "has-background-warning"}
+            );
         }
     }
 

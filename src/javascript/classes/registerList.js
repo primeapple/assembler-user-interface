@@ -23,7 +23,15 @@ export default class RegisterList {
         HEXADECIMAL: 3,
     }
 
+    /**
+     * Creates new Register from array of objects
+     * @param {array} registers An array consisting of objects like {name: string, value: number}, the names of the objects have to be unique
+     */
     constructor(registers) {
+        // test for unique names
+        let registersUniqueNames = registers.map(r=>r.name).filter((v, i, a) => a.indexOf(v) === i);
+        if (registers.length !== registersUniqueNames.length) throw("ERROR: Register names have to be uniqe");
+
         this.registers = registers.map(r => Object.assign({}, r));
         this.numberRepresentation = this.numberRepresentationEnum.DECIMAL;
     }
@@ -40,6 +48,15 @@ export default class RegisterList {
             registers[index] = {name: key, value: 0};
         };
         return new RegisterList(registers);
+    }
+
+    /**
+     * Sets the value of register with name `key` to `value`
+     * @param {string} key Identifier of the register, like "Register[0]"
+     * @param {int/string} value Value of the register
+     */
+    setValue(key, value) {
+        this.registers.filter(r => r.name === key)[0].value = value;
     }
 
     /**

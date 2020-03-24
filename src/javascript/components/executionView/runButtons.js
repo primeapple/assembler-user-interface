@@ -1,3 +1,5 @@
+import { commands } from "../../data/commands";
+
 /**
  * The RunButtons (Run, Step forwards/backwards, Status, Reset) component
  * @module RunButtons 
@@ -8,6 +10,16 @@ var m = require("mithril");
 export default class RunButtons {
 
     breakpoints;
+    currentLine
+
+    createStatus() {
+        let status = "unknown";
+        if (this.currentLine === -1) status = "Noch nicht gestartet";
+        else if (this.currentLine === commands.length) status = "Programm beendet";
+        else if (this.currentLine < commands.length && this.currentLine >= 0)
+            status = "Zeile " + (this.currentLine + 1);
+        return "Status: " + status;
+    }
 
     /**
      * The oninit function for mithril
@@ -15,6 +27,7 @@ export default class RunButtons {
      */
     oninit(vnode) {
         this.breakpoints = vnode.attrs.breakpoints;
+        this.currentLine = vnode.attrs.currentLine;
     }
 
     /**
@@ -30,7 +43,7 @@ export default class RunButtons {
                     <button class="button is-success control">Schritt vorwärts</button>
                     <button class="button is-success control">Schritt zurück</button>
                     <button class="button is-static control is-expanded">
-                        Momentaner Status: Zeile 
+                        {this.createStatus()}
                     </button>
                     <p class="control">
                         <button class="button is-warning">Reset</button>

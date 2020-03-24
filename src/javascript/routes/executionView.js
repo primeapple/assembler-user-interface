@@ -21,31 +21,37 @@ export default class ExecutionView {
      * @param {vnode} vnode 
      */
     oninit(vnode) {
-        this.currentProgram = vnode.attrs.program;
-        this.breakpoints = [];
         // if the user navigates manually to this page and the program is not executable, redirect
-        if (!this.currentProgram.isExecutable()) {
+        if (!vnode.attrs.program.isExecutable()) {
             m.route.set("/editor");
         }
+        this.currentProgram = vnode.attrs.program;
+        this.currentLine = -1;
+        this.breakpoints = [];
+        // create RegisterList for instruktions
+        let instruktions = this.currentProgram.commands.map((command, index) => {return {name: "Instruktion["+index+"]", value: command}});
         this.registerLists = {
             "Register": {
                 list: RegisterList.fromFixedNameAndSize("Register", 16),
-                showShortened: true
+                expand: false
             },
             "Ein/-Ausgabereg.": {
                 list: new RegisterList(
                     RegisterList.fromFixedNameAndSize("Input", 4).getRegisterList()
                     .concat(RegisterList.fromFixedNameAndSize("Output", 4).getRegisterList())),
-                showShortened: true
+                expand: false
+            },
+            "Befehlszähler": {
+                list: new RegisterList([{name: "Befehlszähler", value: 0}]),
+                expand: true
             },
             "Massenspeicher": {
                 list: RegisterList.fromFixedNameAndSize("Speicher", 1024),
-                showShortened: true
+                expand: false
             },
-            // TODO: current Program length
             "Instruktionsspeicher": {
-                list: RegisterList.fromFixedNameAndSize("Instruktion", 10),
-                showShortened: true
+                list: new RegisterList(instruktions),
+                expand: true
             },
             "Steuerleitungen": {
                 list: new RegisterList([
@@ -64,7 +70,7 @@ export default class ExecutionView {
                     {name: "wE", value: 0},
                     {name: "wEReg", value: 0}
                     ]),
-                showShortened: false
+                expand: true
             },
         }
     
@@ -77,11 +83,11 @@ export default class ExecutionView {
     view(vnode) {
         return (
             <main class="flexbox-vertical-container parentheight">
-                <RunButtons breakpoints={this.breakpoints}/>
+                <RunButtons breakpoints={this.breakpoints} currentLine={this.currentLine}/>
                 <div class="columns flex-grow">
                     <div class="column is-6">
                         <div class="parentheight has-border">
-                            <Editor program={this.currentProgram} settings={{readOnly: true, styleActiveLine: false}} breakpoints={this.breakpoints}/>
+                            <Editor program={this.currentProgram} currentLine={this.currentLine} settings={{readOnly: true, styleActiveLine: false}} breakpoints={this.breakpoints} executingStarted={false}/>
                         </div>
                     </div>
                     <div class="column is-6">
