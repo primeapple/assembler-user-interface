@@ -4,7 +4,7 @@
 export default class RegisterList {
 
     /**
-     * This an array of the registers of the Registerlist, with elements like {name: registername, val: number of this register, visible: boolean, shall we show this element or show ...?]
+     * This an array of the registers of the Registerlist, with elements like {name: registername, val: number of this register}
      */
     registers;
 
@@ -24,7 +24,7 @@ export default class RegisterList {
     }
 
     constructor(registers) {
-        this.registers = registers.map(r => Object.assign({}, r, {visible: true}));
+        this.registers = registers.map(r => Object.assign({}, r));
         this.numberRepresentation = this.numberRepresentationEnum.DECIMAL;
     }
     
@@ -37,7 +37,7 @@ export default class RegisterList {
         let registers = new Array(size);
         for (let index = 0; index < size; index++) {
             let key = name+"["+index+"]";
-            registers[index] = {name: key, value: 0, visible: true};
+            registers[index] = {name: key, value: 0};
         };
         return new RegisterList(registers);
     }
@@ -72,16 +72,17 @@ export default class RegisterList {
     }
     
     /**
-     * Returns the RegisterList
+     * Returns the RegisterList, adds property `nextHidden`:false to each element
      */
     getRegisterList() {
-        return this.getRegistersInCurrentRepresentation();
+        return this.getRegistersInCurrentRepresentation().map(r => Object.assign({}, r, {nextHidden: false}));
     }
 
     // TODO: Does this actually work?
     /**
-     * Returns the RegisterList, with changed visible attributes.
-     * @param {int} hideAfterNumberOfConsecutiveZeros After this amount of consecutive zeros we will set `visible` to `false` until a number different from 0 appears
+     * Returns a potential shortened RegisterList.
+     * @param {int} hideAfterNumberOfConsecutiveZeros After this amount of consecutive elements with `value`=0 we will set the next element `nextHidden` to `true`.
+     * Now we delete all following elements with `value`=0 until an element with `value`!=0 appears
      */
     getShortenedRegisterList(hideAfterNumberOfConsecutiveZeros) {
         let numberOfConsecutiveZeros = 0;
@@ -97,9 +98,11 @@ export default class RegisterList {
             // always insert the unchanged register at the end of the table
             if (index===registerList.length-1 || numberOfConsecutiveZeros <= hideAfterNumberOfConsecutiveZeros || nextReg.value !== 0) {
                 shortenedRegisterList.push(reg);
-            } else {
-                reg.visible = false;
+            } else if (numberOfConsecutiveZeros === hideAfterNumberOfConsecutiveZeros+1) {
+                reg.nextHidden = true;
                 shortenedRegisterList.push(reg);
+                continue;
+            } else {
                 continue;
             }
         }

@@ -28,29 +28,44 @@ export default class ExecutionView {
             m.route.set("/editor");
         }
         this.registerLists = {
-            "Register": RegisterList.fromFixedNameAndSize("Register", 16),
-            "Ein/-Ausgabereg.": new RegisterList(
-                RegisterList.fromFixedNameAndSize("Input", 4).getRegisterList()
-                .concat(RegisterList.fromFixedNameAndSize("Output", 4).getRegisterList())),
-            "Massenspeicher": RegisterList.fromFixedNameAndSize("Speicher", 1024),
+            "Register": {
+                list: RegisterList.fromFixedNameAndSize("Register", 16),
+                showShortened: true
+            },
+            "Ein/-Ausgabereg.": {
+                list: new RegisterList(
+                    RegisterList.fromFixedNameAndSize("Input", 4).getRegisterList()
+                    .concat(RegisterList.fromFixedNameAndSize("Output", 4).getRegisterList())),
+                showShortened: true
+            },
+            "Massenspeicher": {
+                list: RegisterList.fromFixedNameAndSize("Speicher", 1024),
+                showShortened: true
+            },
             // TODO: current Program length
-            "Instruktionsspeicher": RegisterList.fromFixedNameAndSize("Instruktion", 10),
-            "Steuerleitungen": new RegisterList([
-                {name: "aluOp", value: 0},
-                {name: "loadE", value: 0},
-                {name: "negativ?", value: 0},
-                {name: "null?", value: 0},
-                {name: "opCode", value: 0},
-                {name: "overflow?", value: 0},
-                {name: "selData", value: 0},
-                {name: "selDest", value: 0},
-                {name: "selJmp", value: 0},
-                {name: "selJmp2", value: 0},
-                {name: "selRD", value: 0},
-                {name: "selRegData", value: 0},
-                {name: "wE", value: 0},
-                {name: "wEReg", value: 0}
-            ])
+            "Instruktionsspeicher": {
+                list: RegisterList.fromFixedNameAndSize("Instruktion", 10),
+                showShortened: true
+            },
+            "Steuerleitungen": {
+                list: new RegisterList([
+                    {name: "aluOp", value: 0},
+                    {name: "loadE", value: 0},
+                    {name: "negativ?", value: 0},
+                    {name: "null?", value: 0},
+                    {name: "opCode", value: 0},
+                    {name: "overflow?", value: 0},
+                    {name: "selData", value: 0},
+                    {name: "selDest", value: 0},
+                    {name: "selJmp", value: 0},
+                    {name: "selJmp2", value: 0},
+                    {name: "selRD", value: 0},
+                    {name: "selRegData", value: 0},
+                    {name: "wE", value: 0},
+                    {name: "wEReg", value: 0}
+                    ]),
+                showShortened: false
+            },
         }
     
     }

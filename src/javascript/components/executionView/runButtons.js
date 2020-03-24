@@ -1,5 +1,5 @@
 /**
- * The RunButtons (Run, Step forwards/backwards/, Status, Reset) component
+ * The RunButtons (Run, Step forwards/backwards, Status, Reset) component
  * @module RunButtons 
  */
 
