@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "jsdoc": "npx jsdoc -d doc/jsdoc/ -r src/javascript/",
-    "js-build": "webpack src/javascript/index.js --outpout bin/app.js -p",
+    "js-build": "webpack src/javascript/index.js --output bin/app.js -p",
     "js-start": "webpack src/javascript/index.js --output bin/app.js -d --watch",
     "css-build": "node-sass --omit-source-map-url src/sass/styles.scss src/css/styles.css",
     "css-start": "npm run css-build -- --watch",
