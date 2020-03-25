@@ -12,12 +12,13 @@ export default class Demo {
 
     constructor(program) {
         this.program = program;
-        this.sampleProgramFlow = samplePrograms.filter(p => p.name === program.name)[0].programFlow;
+        // the `map` is to copy the array
+        this.sampleProgramFlow = samplePrograms.filter(p => p.name === program.name)[0].programFlow
+            .map(object => Object.assign({}, object));
     }
 
     getStartProgramState() {
         let registerLists = new Map();
-        
         registerLists.set("Register", RegisterList.fromFixedNameAndSize("R", 16));
         
         let io = [0,1,2,3].map(v=>["I["+v+"]", 0]).concat([0,1,2,3].map(v=>["O["+v+"]", 0]));

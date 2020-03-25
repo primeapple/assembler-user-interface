@@ -18,7 +18,7 @@ export const samplePrograms = [
                 "Befehlszähler" : 2
             },
             {
-                "Register": {"R[1]" : 1},
+                "Register": {"R[1]" : 1, "R[15]": 20},
                 "Befehlszähler" : 3
             },
             // line out of bound --> finished

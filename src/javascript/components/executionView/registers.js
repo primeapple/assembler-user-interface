@@ -31,8 +31,6 @@ export default class Registers {
         let registerList = this.expandedLists[this.currentActiveTab] ?
             this.stateHistory.currentState().getRegisterList(this.currentActiveTab).getRegisterArray() :
             this.stateHistory.currentState().getRegisterList(this.currentActiveTab).getShortenedRegisterArray(3);
-        console.log(this.stateHistory)
-        console.log(registerList)
         return registerList.map(register => {
             return (
                 <tr>
@@ -72,7 +70,7 @@ export default class Registers {
                     </div>
                 </p>
                 <div class="has-margin-10 is-scrollable flex-grow">
-                    <table class="table is-striped parentwidth">
+                    <table class="table is-striped table-layout-fixed parentwidth">
                         <tbody>
                             {this.createRegisterTable()}
                         </tbody>

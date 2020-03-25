@@ -82,6 +82,10 @@ $body-overflow-y:hidden;
     background: $yellow;
 }
 
+.table-layout-fixed {
+    table-layout: fixed;
+}
+
 
 
 @import "../../node_modules/bulma/bulma.sass";

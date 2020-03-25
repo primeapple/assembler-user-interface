@@ -45,7 +45,7 @@ export default class ProgramState {
         let newRegisterLists = new Map();
         this.registerLists.forEach((rList, name, array) => {
             let copyRegList = rList.clone();
-            copyRegList.setValues(registerListsChangesObject.name);
+            copyRegList.setValues(registerListsChangesObject[name]);
             newRegisterLists.set(name, copyRegList);
         });
         return new ProgramState(newRegisterLists, newNextCommandLine, newStatus);

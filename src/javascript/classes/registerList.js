@@ -18,16 +18,16 @@ export default class RegisterList {
      * Enumeration of the numberRepresentation a register can have
      */
     numberRepresentationEnum = {
-        DECIMAL : 1,
-        BINARY : 2,
-        HEXADECIMAL: 3,
+        DECIMAL : 0,
+        BINARY : 1,
+        HEXADECIMAL: 2,
     }
 
     /**
      * Creates new Register from array of objects
      * @param {Map} registers A Map, keys are the names of the register (string), values are the values (int/string of the registers
      */
-    constructor(registers, numberRepresentation = 1) {
+    constructor(registers, numberRepresentation = 0) {
         this.registers = registers;
         this.numberRepresentation = numberRepresentation;
     }
@@ -58,9 +58,8 @@ export default class RegisterList {
      */
     setValues(newValuesObject) {
         for (const key in newValuesObject) {
-            if (object.hasOwnProperty(key)) {
-                const element = object[key];
-                this.registers.set(key, element);
+            if (newValuesObject.hasOwnProperty(key)) {
+                this.registers.set(key, newValuesObject[key]);
             }
         }
     }
@@ -104,7 +103,7 @@ export default class RegisterList {
         return Array.from(this.getRegistersMapInCurrentRepresentation(), ([k,v]) => {return {name: k, value: v, nextHidden: false}});
     }
 
-    // TODO: Does this actually work?
+    // TODO: This does some weird stuff... Maybe we should reimplement it. However, for the prototype its fine
     /**
      * Returns a potential shortened RegisterArray.
      * @param {int} hideAfterNumberOfConsecutiveZeros After this amount of consecutive elements with `value`=0 we will set the next element `nextHidden` to `true`.
