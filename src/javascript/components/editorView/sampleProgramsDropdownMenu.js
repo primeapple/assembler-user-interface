@@ -1,10 +1,11 @@
+import Demo from "../../classes/demo";
+
 /**
  * The SampleProgramsDropdownMenu component
  * @module SampleProgramsDropdownMenu 
  */
 
 var m = require("mithril");
-import {samplePrograms} from "../../data/samplePrograms";
 
 export default class SampleProgramsDropdownMenu {
     
@@ -22,7 +23,7 @@ export default class SampleProgramsDropdownMenu {
      * Maps the sample programs to dropdown items
      */
     dropdownContent() {
-        return samplePrograms.map(program => {
+        return Demo.getSamplePrograms().map(program => {
             return (
                 <a class="dropdown-item" onclick={e=>this.handleDropdownClick(program)}>
                     {program.name}

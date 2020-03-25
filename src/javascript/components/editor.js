@@ -19,12 +19,9 @@ export default class Editor {
      */
     codemirror;
     /**
-     * Did we start executing yet?
+     * The statehistory of the program
      */
-    executingStarted;
-    /**
-     * The current linenumber
-     */
+    stateHistory;
 
     /**
      * The default settings for the Editor
@@ -34,8 +31,27 @@ export default class Editor {
             lineNumbers: true,
             lineWrapping: true,
             styleActiveLine: true,
+            firstLineNumber: 0,
             gutters: ["Codemirror-custom-breakpoint", "CodeMirror-linenumbers"],
         }
+    }
+
+    /**
+     * This marks a line and unmarks all other lines
+     * @param {int} linenumber number of the line to mark
+     */
+    markLine(linenumber) {
+        this.codemirror.markText({line: linenumber, ch: 0},
+            {line: linenumber, ch: this.currentProgram.commands[linenumber].length},
+            {className: "has-background-warning"}
+        );
+    }
+
+    /**
+     * This umarks all currently marked lines
+     */
+    unmarkLines() {
+        this.codemirror.getAllMarks().forEach(m => m.clear());
     }
 
     /**
@@ -92,8 +108,7 @@ export default class Editor {
     oninit(vnode) {
         this.currentProgram = vnode.attrs.program;
         this.breakpoints = vnode.attrs.breakpoints;
-        this.currentLine = vnode.attrs.currentLine;
-        this.executingStarted = vnode.attrs.executingStarted;
+        this.stateHistory = vnode.attrs.stateHistory;
         this.settings = Object.assign({}, this.getDefaultSettings(), vnode.attrs.settings);
     }
 
@@ -103,6 +118,7 @@ export default class Editor {
      */
     oncreate(vnode) {
         this.createCodeMirror(vnode.dom, vnode.attrs.readOnly);
+        if (this.stateHistory !== undefined) this.markLine(this.stateHistory.currentState().nextCommandLine);
     }
     
     /**
@@ -115,11 +131,11 @@ export default class Editor {
         if (this.codemirror.getValue() !== this.currentProgram.toText()) {
             this.codemirror.setValue(this.currentProgram.toText());
         }
-        if (this.currentLine !== undefined && this.executingStarted !== undefined && this.executingStarted) {
-            this.codemirror.markText({line: this.currentLine, ch: 0},
-                {line: this.currentLine, ch: this.currentProgram.commands[this.currentLine].length},
-                {className: "has-background-warning"}
-            );
+        if (this.stateHistory !== undefined) {
+            this.unmarkLines();
+            if (!this.stateHistory.currentState().isFinished()) {
+                this.markLine(this.stateHistory.currentState().nextCommandLine);
+            }
         }
     }
 

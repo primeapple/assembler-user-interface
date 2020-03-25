@@ -1,10 +1,10 @@
 /**
- * This is the model for the registerList, that is passed around in the ExecutionView.
+ * This is the model for a list of Registers of one type (eg. "Steuerleitungen")
  */
 export default class RegisterList {
 
     /**
-     * This an array of the registers of the Registerlist, with elements like {name: registername, val: number of this register}
+     * This a Map of the registers of the Registerlist, with elements like {registername : content of this register}
      */
     registers;
 
@@ -25,15 +25,11 @@ export default class RegisterList {
 
     /**
      * Creates new Register from array of objects
-     * @param {array} registers An array consisting of objects like {name: string, value: number}, the names of the objects have to be unique
+     * @param {Map} registers A Map, keys are the names of the register (string), values are the values (int/string of the registers
      */
-    constructor(registers) {
-        // test for unique names
-        let registersUniqueNames = registers.map(r=>r.name).filter((v, i, a) => a.indexOf(v) === i);
-        if (registers.length !== registersUniqueNames.length) throw("ERROR: Register names have to be uniqe");
-
-        this.registers = registers.map(r => Object.assign({}, r));
-        this.numberRepresentation = this.numberRepresentationEnum.DECIMAL;
+    constructor(registers, numberRepresentation = 1) {
+        this.registers = registers;
+        this.numberRepresentation = numberRepresentation;
     }
     
     /**
@@ -42,21 +38,31 @@ export default class RegisterList {
      * @param {int} size Number of registers to create
      */
     static fromFixedNameAndSize(name, size) {
-        let registers = new Array(size);
+        let registers = new Map();
         for (let index = 0; index < size; index++) {
-            let key = name+"["+index+"]";
-            registers[index] = {name: key, value: 0};
+            registers.set(name+"["+index+"]", 0);
         };
         return new RegisterList(registers);
     }
 
     /**
-     * Sets the value of register with name `key` to `value`
-     * @param {string} key Identifier of the register, like "Register[0]"
-     * @param {int/string} value Value of the register
+     * Returns a copy of this RegisterList
      */
-    setValue(key, value) {
-        this.registers.filter(r => r.name === key)[0].value = value;
+    clone() {
+        return new RegisterList(new Map(this.registers), this.status);
+    }
+
+    /**
+     * Sets new values for this registers
+     * @param {object} newValuesObject object with new values for the registers, like {R[2]: 4, R[6]: 3}
+     */
+    setValues(newValuesObject) {
+        for (const key in newValuesObject) {
+            if (object.hasOwnProperty(key)) {
+                const element = object[key];
+                this.registers.set(key, element);
+            }
+        }
     }
 
     /**
@@ -67,53 +73,55 @@ export default class RegisterList {
     }
 
     /**
-     * Returns a copy of this.registers in the representation of this.representation
+     * Returns a copy of this.registers in the representation of this.representation, numbers will be converted to Strings.
      * For negative numbers in Hexa and Binary, we choose the two's complement representation
      * If you don't want that, remove the ">>> 0" operator
      */
-    getRegistersInCurrentRepresentation() {
+    getRegistersMapInCurrentRepresentation() {
+        let copyReg = new Map();
         switch (this.numberRepresentation) {
             case this.numberRepresentationEnum.DECIMAL:
-                // returns copy
-                return JSON.parse(JSON.stringify(this.registers));
+                for (const [k,v] of this.registers) copyReg.set(k,v.toString())
+                break;
             case this.numberRepresentationEnum.BINARY:
                 // changes number to binary, for negative we return two's complement
-                return this.registers.map(reg => Object.assign({}, reg, {value: (reg.value >>> 0).toString(2)}));
+                for (const [k,v] of this.registers) copyReg.set(k, (v.constructor === String) ? v : (v >>> 0).toString(2));
+                break;
             case this.numberRepresentationEnum.HEXADECIMAL:
                 // changes number to hexadecimal, for negative we return two's complement
-                return this.registers.map(reg => Object.assign({}, reg, {value: (reg.value >>> 0).toString(16)}));
-            default:
-                console.log("Unknown Number status");
+                for (const [k,v] of this.registers) copyReg.set(k, (v.constructor === String) ? v : (v >>> 0).toString(16));
                 break;
-        }
+            default:
+                throw "Unknown Number Representation Type";
+            }
+        return copyReg;
     }
     
     /**
-     * Returns the RegisterList, adds property `nextHidden`:false to each element
+     * Returns the RegisterList in the following way: {k1: v1, k2: v2, ...} becomes [{name: k1, value: v1, hidden: false}, {name: k1, value: v1, hidden: false}, ...]
      */
-    getRegisterList() {
-        return this.getRegistersInCurrentRepresentation().map(r => Object.assign({}, r, {nextHidden: false}));
+    getRegisterArray() {
+        return Array.from(this.getRegistersMapInCurrentRepresentation(), ([k,v]) => {return {name: k, value: v, nextHidden: false}});
     }
 
     // TODO: Does this actually work?
     /**
-     * Returns a potential shortened RegisterList.
+     * Returns a potential shortened RegisterArray.
      * @param {int} hideAfterNumberOfConsecutiveZeros After this amount of consecutive elements with `value`=0 we will set the next element `nextHidden` to `true`.
      * Now we delete all following elements with `value`=0 until an element with `value`!=0 appears
      */
-    getShortenedRegisterList(hideAfterNumberOfConsecutiveZeros) {
+    getShortenedRegisterArray(hideAfterNumberOfConsecutiveZeros) {
         let numberOfConsecutiveZeros = 0;
         let shortenedRegisterList = [];
-        let registerList = this.getRegisterList();
+        let registerList = this.getRegisterArray();
        
         for (let index = 0; index < registerList.length; index++) {
-            // copy the current register
             let reg = registerList[index];
             let nextReg = registerList[index+1];
-            if (reg.value === 0) numberOfConsecutiveZeros++;
+            if (reg.value === "0") numberOfConsecutiveZeros++;
             else numberOfConsecutiveZeros = 0;
             // always insert the unchanged register at the end of the table
-            if (index===registerList.length-1 || numberOfConsecutiveZeros <= hideAfterNumberOfConsecutiveZeros || nextReg.value !== 0) {
+            if (index===registerList.length-1 || numberOfConsecutiveZeros <= hideAfterNumberOfConsecutiveZeros || nextReg.value !== "0") {
                 shortenedRegisterList.push(reg);
             } else if (numberOfConsecutiveZeros === hideAfterNumberOfConsecutiveZeros+1) {
                 reg.nextHidden = true;

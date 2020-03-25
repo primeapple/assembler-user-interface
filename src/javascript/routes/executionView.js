@@ -7,14 +7,14 @@ var m = require("mithril");
 import Editor from "../components/editor"
 import RunButtons from "../components/executionView/runButtons";
 import Registers from "../components/executionView/registers";
-import RegisterList from "../classes/registerList";
+import Demo from "../classes/demo";
+import ProgramStateHistory from "../classes/programStateHistory";
 
 export default class ExecutionView {
 
     currentProgram;
     breakpoints;
-
-    registerLists;
+    stateHistory;
 
     /**
      * The oninit function for mithril
@@ -24,56 +24,11 @@ export default class ExecutionView {
         // if the user navigates manually to this page and the program is not executable, redirect
         if (!vnode.attrs.program.isExecutable()) {
             m.route.set("/editor");
+            return;
         }
         this.currentProgram = vnode.attrs.program;
-        this.currentLine = -1;
+        this.stateHistory = new ProgramStateHistory(new Demo(this.currentProgram))
         this.breakpoints = [];
-        // create RegisterList for instruktions
-        let instruktions = this.currentProgram.commands.map((command, index) => {return {name: "Instruktion["+index+"]", value: command}});
-        this.registerLists = {
-            "Register": {
-                list: RegisterList.fromFixedNameAndSize("Register", 16),
-                expand: false
-            },
-            "Ein/-Ausgabereg.": {
-                list: new RegisterList(
-                    RegisterList.fromFixedNameAndSize("Input", 4).getRegisterList()
-                    .concat(RegisterList.fromFixedNameAndSize("Output", 4).getRegisterList())),
-                expand: false
-            },
-            "Befehlszähler": {
-                list: new RegisterList([{name: "Befehlszähler", value: 0}]),
-                expand: true
-            },
-            "Massenspeicher": {
-                list: RegisterList.fromFixedNameAndSize("Speicher", 1024),
-                expand: false
-            },
-            "Instruktionsspeicher": {
-                list: new RegisterList(instruktions),
-                expand: true
-            },
-            "Steuerleitungen": {
-                list: new RegisterList([
-                    {name: "aluOp", value: 0},
-                    {name: "loadE", value: 0},
-                    {name: "negativ?", value: 0},
-                    {name: "null?", value: 0},
-                    {name: "opCode", value: 0},
-                    {name: "overflow?", value: 0},
-                    {name: "selData", value: 0},
-                    {name: "selDest", value: 0},
-                    {name: "selJmp", value: 0},
-                    {name: "selJmp2", value: 0},
-                    {name: "selRD", value: 0},
-                    {name: "selRegData", value: 0},
-                    {name: "wE", value: 0},
-                    {name: "wEReg", value: 0}
-                    ]),
-                expand: true
-            },
-        }
-    
     }
 
     /**
@@ -81,17 +36,18 @@ export default class ExecutionView {
      * @param {vnode} vnode 
      */
     view(vnode) {
+        if (this.currentProgram === undefined) return;
         return (
             <main class="flexbox-vertical-container parentheight">
-                <RunButtons breakpoints={this.breakpoints} currentLine={this.currentLine}/>
+                <RunButtons breakpoints={this.breakpoints} stateHistory={this.stateHistory}/>
                 <div class="columns flex-grow">
                     <div class="column is-6">
                         <div class="parentheight has-border">
-                            <Editor program={this.currentProgram} currentLine={this.currentLine} settings={{readOnly: true, styleActiveLine: false}} breakpoints={this.breakpoints} executingStarted={false}/>
+                            <Editor program={this.currentProgram} settings={{readOnly: true, styleActiveLine: false}} breakpoints={this.breakpoints} stateHistory={this.stateHistory}/>
                         </div>
                     </div>
                     <div class="column is-6">
-                        <Registers registerLists={this.registerLists}/>
+                        <Registers stateHistory={this.stateHistory}/>
                     </div>
                 </div>
             </main>
