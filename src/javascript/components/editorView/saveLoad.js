@@ -50,7 +50,7 @@ export default class SaveLoad {
         return (
             <div class="column is-3">
                 <div class="field is-grouped">
-                    <div class="file is-info control" onclick={e=>this.download()}>
+                    <div tabindex="0" class="file is-info control" onclick={e=>this.download()} onkeypress={e=>this.download()}>
                         <a class="file-input" type="file"></a>
                         <span class="file-cta">
                         <span class="file-icon">
@@ -61,10 +61,10 @@ export default class SaveLoad {
                         </span>
                         </span>
                     </div>
-                    <div class="file is-info control">
+                    {/* the onkeypress simulates a click on the hidden input element, to make it aria conform :) */}
+                    <div onkeypress={e=>e.target.childNodes[0].childNodes[0].click()} tabindex="0" class="file is-info control">
                         <label class="file-label">
-                            <input class="file-input" type="file" onchange={e=>this.upload(e.target.files[0]
-)}></input>
+                            <input tabindex="-1" class="file-input" type="file" onchange={e=>this.upload(e.target.files[0])} />
                             <span class="file-cta">
                             <span class="file-icon">
                                 <i class="fas fa-cloud-upload-alt"></i>

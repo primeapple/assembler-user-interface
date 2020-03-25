@@ -25,7 +25,7 @@ export default class SampleProgramsDropdownMenu {
     dropdownContent() {
         return Demo.getSamplePrograms().map(program => {
             return (
-                <a class="dropdown-item" onclick={e=>this.handleDropdownClick(program)}>
+                <a tabindex="0" class="dropdown-item" onclick={e=>this.handleDropdownClick(program)}>
                     {program.name}
                 </a>
             );

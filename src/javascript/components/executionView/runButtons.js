@@ -1,5 +1,3 @@
-import Demo from "../../classes/demo";
-
 /**
  * The RunButtons (Run, Step forwards/backwards, Status, Reset) component
  * @module RunButtons 
@@ -101,9 +99,9 @@ export default class RunButtons {
                         disabled={this.stateHistory.currentState().isFinished()}>Schritt vorwärts</button>
                     <button class="button is-success control" onclick={e=>this.runOneStepBackwards()}
                         disabled={this.stateHistory.currentState().isNotStarted()}>Schritt zurück</button>
-                    <button class="button is-static control is-expanded">
+                    <span class="button is-static control is-expanded">
                         {this.createStatusText()}
-                    </button>
+                    </span>
                     <p class="control">
                         <button class="button is-warning" onclick={e=>this.resetProgram()}
                             disabled={this.stateHistory.currentState().isNotStarted()}>Reset</button>

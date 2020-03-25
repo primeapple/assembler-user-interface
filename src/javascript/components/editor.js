@@ -98,6 +98,11 @@ export default class Editor {
                 }
             });
         }
+        cm.setOption("extraKeys", {
+            Esc: function(c) {
+                c.display.input.blur()
+            }
+          });
         this.codemirror = cm;
     }
 

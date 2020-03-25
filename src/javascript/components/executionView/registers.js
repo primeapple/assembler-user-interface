@@ -16,9 +16,8 @@ export default class Registers {
      */
     createRegisterHeading() {
         return this.stateHistory.currentState().getRegisterListNames().map(name => 
-            <li class={name === this.currentActiveTab ? "is-active" : ""} 
-                onclick={e=>this.currentActiveTab = name}>
-                    <a>{name}</a>
+            <li class={name === this.currentActiveTab ? "is-active" : ""}>
+                    <a tabindex="0" onkeypress={e=>this.currentActiveTab = name} onclick={e=>this.currentActiveTab = name}>{name}</a>
             </li>
         );
     }
@@ -34,12 +33,17 @@ export default class Registers {
         return registerList.map(register => {
             return (
                 <tr>
-                    <td onclick={e => this.expandedLists[this.currentActiveTab] = !this.expandedLists[this.currentActiveTab]}>
+                    <td tabindex="0" 
+                        onclick={e => this.expandedLists[this.currentActiveTab] = !this.expandedLists[this.currentActiveTab]}
+                        onkeypress={e => this.expandedLists[this.currentActiveTab] = !this.expandedLists[this.currentActiveTab]}>
                         {register.nextHidden ? 
                         (<span><i class="far fa-plus-square" /></span>) :
                         register.name}
                     </td>
-                    <td onclick={e => this.stateHistory.currentState().getRegisterList(this.currentActiveTab).changeRepresentation()}>{register.value}</td>
+                    <td tabindex="0" onclick={e => this.stateHistory.currentState().getRegisterList(this.currentActiveTab).changeRepresentation()}
+                        onkeypress={e => this.stateHistory.currentState().getRegisterList(this.currentActiveTab).changeRepresentation()}>
+                        {register.value}
+                    </td>
                 </tr>
             );
         });
