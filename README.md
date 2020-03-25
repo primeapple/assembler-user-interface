@@ -7,15 +7,15 @@ First you have to install the dependencies:
 npm install
 ```
 
-Now you have to build the App. Use   
-```sh
-# watching for changes:
-npm run start
-```
-or
+Now you have to build the App. You can use one of the following. However, I recommend to build the app one time (`npm run build`). This enables building the css file... As soon as it exists, you can use whatever you want. 
 ```sh
 # build production app:
 npm run build
+```
+or
+```sh
+# watching for changes:
+npm run start
 ```
 
 You can now access the webapp by running `npx http-server` and visit http://localhost:8080 in your browser.
