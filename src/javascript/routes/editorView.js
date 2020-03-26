@@ -9,6 +9,7 @@ import CompileExecute from "../components/editorView/compileExecute";
 import SampleProgramsDropdownMenu from "../components/editorView/sampleProgramsDropdownMenu";
 import SaveLoad from "../components/editorView/saveLoad"
 import CommandTable from "../components/editorView/commandTable";
+import Modals from "../components/editorView/modals";
 
 export default class EditorView {
 
@@ -39,17 +40,12 @@ export default class EditorView {
      */
     view(vnode) {
         return (
-            <main class="flexbox-vertical-container parentheight">
+            <main class="flexbox-vertical-container parentheight is-clipped">
                 <div class="columns has-margin-10">
                     <CompileExecute program={this.currentProgram} messageBox={this.messageBox}/>
                     <SampleProgramsDropdownMenu program={this.currentProgram} />
                     <SaveLoad program={this.currentProgram} />
-                    <div class="column is-3">
-                        <div class="buttons is-right">
-                            <button class="button is-info">Hilfe</button>
-                            <button class="button is-info">Einstellungen</button>
-                        </div>
-                    </div>
+                    <Modals />
                 </div>
                 <div class="columns has-margin-10 flex-grow">
                     <div class="column is-6">
