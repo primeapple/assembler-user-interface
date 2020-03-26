@@ -1,5 +1,7 @@
 /**
+ * The RegisterList Class
  * This is the model for a list of Registers of one type (eg. "Steuerleitungen")
+ * @module RegisterList 
  */
 export default class RegisterList {
 

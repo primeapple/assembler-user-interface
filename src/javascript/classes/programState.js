@@ -1,6 +1,8 @@
 /**
+ * The ProgramState Class
  * This is the model for the ProgramState, that contains information about the current state of the problem.
  * We save things like linenumber, registerlists, status of representation (binary, decimal, hexadec.)
+ * @module ProgramState 
  */
 export default class ProgramState {
 
@@ -28,6 +30,12 @@ export default class ProgramState {
         RUNNING: 3,
     }
 
+    /**
+     * Creates new ProgramState
+     * @param {Map} registerListsObject a Map with keys: name of registerLists and values: content of the registerLists
+     * @param {int} nextCommandLine a number of the line where the program goes next
+     * @param {int} status status of the program (one of statusEnum), defaults to 1
+     */
     constructor(registerListsObject, nextCommandLine, status=1) {
         this.currentStatus = status;
         this.registerLists = registerListsObject;

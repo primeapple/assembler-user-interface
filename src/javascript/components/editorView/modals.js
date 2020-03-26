@@ -1,5 +1,5 @@
 /**
- * The CompileExecute component (help and settings)
+ * The Modals component (help and settings)
  * @module Modals 
  */
 
@@ -10,6 +10,9 @@ export default class Modals {
     showSettings = false;
     showHelp = false;
 
+    /**
+     * Creates the help Modal
+     */
     helpModal() {
         return (
             <div class={"modal" + (this.showHelp ? " is-active" : "")}>
@@ -38,6 +41,9 @@ export default class Modals {
         );
     }
 
+    /**
+     * Creates the settings Modal
+     */
     settingsModal() {
         return (
             <div class={"modal" + (this.showSettings ? " is-active" : "")}>
@@ -61,6 +67,7 @@ export default class Modals {
             </div>
         );
     }
+
     /**
      * The view function for mithril
      * @param {vnode} vnode 

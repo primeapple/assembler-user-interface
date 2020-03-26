@@ -56,7 +56,7 @@ export default class Editor {
 
     /**
      * Defines, what happens when a breakpoint was set
-     * @param {Codemirror Instance} codemirror 
+     * @param {codemirror_instance} codemirror 
      * @param {integer} line The line where a breakpoint was set, counting from 0
      * @param {array} breakpoints A reference to this.breakpoints
      */

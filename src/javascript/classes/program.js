@@ -1,5 +1,7 @@
 /**
+ * The Program Class
  * This is the model for the current programm, that is passed around in the webapp
+ * @module Program
  */
 export default class Program {
     /**
@@ -28,6 +30,9 @@ export default class Program {
         NOT_EXECUTABLE: 3,
     }
 
+    /**
+     * Creats new Program with empty commands, name="unknown", no errorMessage and status UNKNOWN
+     */
     constructor() {
         this.commands = [];
         this.errorMessage = "";

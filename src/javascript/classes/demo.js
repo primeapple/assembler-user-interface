@@ -1,5 +1,7 @@
 /**
+ * The Demo Class.
  * This class is for demonstration purposes. It later has to be replaced with actual content.
+ * @module Demo 
  */
 
 import {samplePrograms} from "../data/samplePrograms";
@@ -10,6 +12,10 @@ export default class Demo {
     program;
     sampleProgramFlow;
 
+    /**
+     * Creates a new Demo
+     * @param {Program} program Program to get the fitting program from the samplePrograms
+     */
     constructor(program) {
         this.program = program;
         // the `map` is to copy the array
@@ -17,6 +23,9 @@ export default class Demo {
             .map(object => Object.assign({}, object));
     }
 
+    /**
+     * Creates a start program state
+     */
     getStartProgramState() {
         let registerLists = new Map();
         registerLists.set("Register", RegisterList.fromFixedNameAndSize("R", 16));
@@ -48,6 +57,10 @@ export default class Demo {
         return new ProgramState(registerLists, this.sampleProgramFlow.shift()["Befehlszähler"]);
     }
 
+    /**
+     * Creates the next programState, given the current Program State (and later maybe a Program)
+     * @param {ProgramState} programState 
+     */
     getNextProgramState(programState) {
         let stateUpdates = this.sampleProgramFlow.shift();
         let nextLine = stateUpdates["Befehlszähler"];
@@ -55,6 +68,9 @@ export default class Demo {
         return programState.nextState(stateUpdates, nextLine, this.sampleProgramFlow.length === 0);
     }
 
+    /**
+     * Returns the sample Programs from `src/javascript/data/samplePrograms.js`
+     */
     static getSamplePrograms() {
         return samplePrograms;
     }
