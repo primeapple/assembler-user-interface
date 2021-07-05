@@ -1,0 +1,93 @@
+@charset "utf-8";
+
+@import "../../node_modules/bulma/sass/utilities/initial-variables.sass";
+// @import "../../node_modules/bulma/sass/utilities/derived-variables.sass";
+$box-color: $green;
+$box-background-color: $grey-darker;
+
+
+body, html {
+    height: 100%;
+}
+
+main {
+    padding : 10px;
+}
+
+// Page should not be scrollable
+$body-overflow-y:hidden;
+
+.parentheight {
+    height: 100% !important;
+}
+
+.parentwidth {
+    width: 100% !important;
+}
+
+.flexbox-vertical-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.has-margin-10 {
+    margin: 10px;
+}
+
+.flex-grow {
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.flex-base-height-200 {
+    flex: 0 0 200px;
+    min-height: 200px;
+}
+
+.linebreak {
+    white-space: pre-wrap;
+}
+
+.is-scrollable {
+    height: 100%;
+    overflow: auto;
+}
+
+.has-background-lightgrey {
+    background-color: lightgrey;
+}
+
+.has-border {
+    border: 2px solid lightgrey;
+    border-radius: 5px;
+}
+
+// Codemirror config:
+.CodeMirror {
+    height: 100% !important;
+}
+
+.CodeMirror-gutter-elt {
+    left: 10px !important;
+}
+
+// TODO: change color to primary?
+.Codemirror-custom-breakpoint {
+    width: 10px;
+    color: $turquoise;
+}
+
+// for the commandTable
+.searched-text {
+    background: $yellow;
+}
+
+.table-layout-fixed {
+    table-layout: fixed;
+}
+
+
+
+@import "../../node_modules/bulma/bulma.sass";
+
+
