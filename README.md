@@ -1,5 +1,7 @@
 # Assembler User Interface
 This project contains a prototype for the pHILOS Web Interface. It was made by Toni Müller as a final exam for the module "Clientseitige Webanwendungen" in the winter semester 2019/2020 at the MLU.
+It is currently published at Github Pages here: https://primeapple.github.io/assembler-user-interface
+Sadly it doesn't work correctly yet, so make sure to check it out locally!
 
 # Usage
 First you have to install the dependencies:  
@@ -19,6 +21,11 @@ npm run start
 ```
 
 You can now access the webapp by running `npx http-server` and visit http://localhost:8080 in your browser.
+
+Deploy it by running:
+```sh
+npm deploy
+```
 
 
 # Documentation
