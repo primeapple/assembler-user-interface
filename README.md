@@ -32,7 +32,7 @@ You can access the documentation by opening the `doc/jsdoc/index.html` file in y
 # Additional Information
 1. The low-fidelity-prototype can be found in the `doc/` folder.
 
-2. The UserStories can be found at [the issues list (open and closed ones)](https://gitlab.informatik.uni-halle.de/ajwxf/assembler-user-interface/issues?scope=all&utf8=%E2%9C%93&state=all).
+2. The UserStories were implementet as issues on gitlab. They got lost on the move to github.
 
 3. To use the WebApp together with an actual backend you have to consider the following. Currently we have some fixed programs stored in `src/javascript/data/samplePrograms.js`. We access this file only in the Demo class in `src/javascript/data/samplePrograms.js`. So you will have to only edit these two files. My suggestion would be to implement two endpoints. One for compiling the program and sending error messages if there were any errors. The other one is for executing the next step of the program. It will need the commands of the program (see `src/javascript/classes/program.js` and the current programm state aka values of registers, line numbers, etc. (see `src/javascript/classes/programState.js`).
 
